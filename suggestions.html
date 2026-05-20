@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggestions - Linux Distros Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Suggestions Page Specific Styles */
+        .suggestions-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .suggestions-intro {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .suggestions-intro h1 {
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .suggestions-intro p {
+            font-size: var(--font-size-lg);
+            color: var(--text-light);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: var(--font-size-base);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+            color: var(--text-dark);
+            transition: var(--transition);
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+            line-height: 1.6;
+        }
+
+        .form-note {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-top: var(--spacing-xs);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .btn-submit {
+            flex: 1;
+        }
+
+        .btn-cancel {
+            flex: 1;
+        }
+
+        .approval-notice {
+            background-color: var(--secondary-color);
+            border-left: 4px solid var(--accent-color);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .approval-notice h3 {
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .approval-notice p {
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .form-success {
+            display: none;
+            background-color: #d1fae5;
+            border-left: 4px solid var(--accent-color);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .form-success h3 {
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .form-success p {
+            color: #065f46;
+            margin: 0;
+        }
+
+        @media (max-width: 479px) {
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .btn-submit,
+            .btn-cancel {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🐧</span>
+                <span class="logo-text">Linux Distros</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="what-is-linux.html" class="nav-link">What Is Linux?</a></li>
+                <li><a href="distributions.html" class="nav-link">Distributions</a></li>
+                <li><a href="compare.html" class="nav-link">Compare</a></li>
+                <li><a href="getting-started.html" class="nav-link">Getting Started</a></li>
+                <li><a href="suggestions.html" class="nav-link active">Suggestions</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Page Header -->
+        <section class="hero" style="min-height: 300px;">
+            <div class="hero-content">
+                <h1>Share Your Feedback</h1>
+                <p>Help us improve this guide with your suggestions and ideas</p>
+            </div>
+        </section>
+
+        <!-- Suggestions Section -->
+        <section class="suggestions-section" style="padding: var(--spacing-2xl) 0;">
+            <div class="suggestions-container">
+                <!-- Intro Text -->
+                <div class="suggestions-intro">
+                    <p>Have a suggestion for this guide? Found something that could be better? We'd love to hear from you! All suggestions are reviewed by our team before being published.</p>
+                </div>
+
+                <!-- Approval Notice -->
+                <div class="approval-notice">
+                    <h3>📋 Before You Submit</h3>
+                    <p>All submissions are reviewed and approved by our team. This helps keep the guide high-quality and accurate. You'll see your feedback reflected on the site once it's approved!</p>
+                </div>
+
+                <!-- Success Message (Hidden by default) -->
+                <div class="form-success" id="successMessage">
+                    <h3>✓ Thank You!</h3>
+                    <p>Your suggestion has been submitted. Our team will review it and get back to you soon.</p>
+                </div>
+
+                <!-- Suggestion Form -->
+                <form id="suggestionForm" class="suggestion-form">
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            placeholder="Enter your name" 
+                            required
+                            autocomplete="name"
+                        >
+                        <p class="form-note">We'd like to credit you for your suggestion</p>
+                    </div>
+
+                    <!-- Email Field (for contact, optional but recommended) -->
+                    <div class="form-group">
+                        <label for="email">Your Email (optional)</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="your.email@example.com"
+                            autocomplete="email"
+                        >
+                        <p class="form-note">So we can follow up with you if needed</p>
+                    </div>
+
+                    <!-- Suggestion Message -->
+                    <div class="form-group">
+                        <label for="suggestion">Your Suggestion *</label>
+                        <textarea 
+                            id="suggestion" 
+                            name="suggestion" 
+                            placeholder="What would you like to suggest? Be as detailed as you'd like..."
+                            required
+                        ></textarea>
+                        <p class="form-note">Tell us what you think! Ideas for new sections, corrections, improvements, etc.</p>
+                    </div>
+
+                    <!-- Optional Link -->
+                    <div class="form-group">
+                        <label for="link">Optional Link</label>
+                        <input 
+                            type="url" 
+                            id="link" 
+                            name="link" 
+                            placeholder="https://example.com/resource"
+                            autocomplete="url"
+                        >
+                        <p class="form-note">Link to a resource, article, or reference (optional)</p>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-submit">Submit Suggestion</button>
+                        <button type="reset" class="btn btn-secondary btn-cancel">Clear Form</button>
+                    </div>
+                </form>
+
+                <!-- Additional Info -->
+                <div style="margin-top: var(--spacing-2xl); padding-top: var(--spacing-2xl); border-top: 1px solid var(--border-color); text-align: center;">
+                    <p style="color: var(--text-light); font-size: 0.95rem;">
+                        <strong>Questions?</strong> Check out our <a href="about.html">About page</a> or <a href="index.html">go back home</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="what-is-linux.html">What Is Linux?</a></li>
+                        <li><a href="distributions.html">Distributions</a></li>
+                        <li><a href="compare.html">Compare</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="suggestions.html">Suggestions</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>A beginner-friendly guide to Linux distributions. Made for learning.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Linux Distros Guide. All rights reserved.</p>
+                <p>This is a school project. <a href="about.html">Learn more →</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/nav.js"></script>
+    <script>
+        // Handle form submission
+        document.getElementById('suggestionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                suggestion: document.getElementById('suggestion').value,
+                link: document.getElementById('link').value
+            };
+
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+
+            // Reset form
+            this.reset();
+
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+
+            // Hide success message after 5 seconds
+            setTimeout(function() {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+
+            // TODO: Send formData to backend API
+            // Example:
+            // fetch('/api/suggestions', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(formData)
+            // });
+
+            console.log('Form submitted with data:', formData);
+        });
+    </script>
+</body>
+</html>
