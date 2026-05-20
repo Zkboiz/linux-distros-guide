@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Linux Distros Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* About Page Specific Styles */
+        .page-section {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .content-section h2 {
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: var(--spacing-md);
+        }
+
+        .content-section p {
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-lg);
+            line-height: 1.8;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .about-card {
+            background-color: var(--secondary-color);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .about-card h3 {
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .about-card p {
+            margin: 0;
+            font-size: var(--font-size-base);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .feature-list li {
+            padding: var(--spacing-md) 0;
+            padding-left: var(--spacing-lg);
+            position: relative;
+            color: var(--text-dark);
+            font-size: var(--font-size-base);
+        }
+
+        .feature-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background-color: var(--secondary-color);
+            border-left: 4px solid var(--accent-color);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+            border-radius: var(--border-radius);
+        }
+
+        .highlight-box strong {
+            color: var(--accent-color);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-top: var(--spacing-2xl);
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--spacing-md);
+        }
+
+        @media (max-width: 767px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🐧</span>
+                <span class="logo-text">Linux Distros</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="what-is-linux.html" class="nav-link">What Is Linux?</a></li>
+                <li><a href="distributions.html" class="nav-link">Distributions</a></li>
+                <li><a href="compare.html" class="nav-link">Compare</a></li>
+                <li><a href="getting-started.html" class="nav-link">Getting Started</a></li>
+                <li><a href="suggestions.html" class="nav-link">Suggestions</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Page Header -->
+        <section class="hero" style="min-height: 300px;">
+            <div class="hero-content">
+                <h1>About This Project</h1>
+                <p>Learn more about this guide and its mission</p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section style="padding: var(--spacing-2xl) 0;">
+            <div class="container page-section">
+                <!-- Project Overview -->
+                <div class="content-section">
+                    <h2>The Mission</h2>
+                    <p>This Linux Distros Guide was created as a <strong>school project</strong> with one simple goal: <strong>make Linux accessible to beginners.</strong></p>
+                    <p>Many people think Linux is complicated and only for programmers. That's not true! This guide breaks down Linux into simple, easy-to-understand concepts and helps you choose the right distribution for your journey.</p>
+                    
+                    <div class="highlight-box">
+                        <strong>Our Goal:</strong> Help beginners understand what Linux is, explore different distributions, and take their first steps into the open-source world with confidence.
+                    </div>
+                </div>
+
+                <!-- What You'll Find Here -->
+                <div class="content-section">
+                    <h2>What You'll Find Here</h2>
+                    <ul class="feature-list">
+                        <li><strong>What Is Linux?</strong> - Beginner-friendly explanations of Linux concepts</li>
+                        <li><strong>Popular Distributions</strong> - Overview of the most user-friendly Linux distros</li>
+                        <li><strong>Comparison Guide</strong> - Help choosing which distro suits you best</li>
+                        <li><strong>Getting Started</strong> - Step-by-step installation and setup guides</li>
+                        <li><strong>Suggestions</strong> - Share feedback and help improve this guide</li>
+                    </ul>
+                </div>
+
+                <!-- Why This Guide? -->
+                <div class="content-section">
+                    <h2>Why This Guide Exists</h2>
+                    <div class="about-grid">
+                        <div class="about-card">
+                            <h3>📚 For Learners</h3>
+                            <p>If you're curious about Linux but don't know where to start, this guide is for you.</p>
+                        </div>
+                        <div class="about-card">
+                            <h3>🎓 For Students</h3>
+                            <p>A practical project that teaches web development, accessibility, and open-source thinking.</p>
+                        </div>
+                        <div class="about-card">
+                            <h3>🌍 For Everyone</h3>
+                            <p>Free, open, and built with the belief that technology education should be accessible to all.</p>
+                        </div>
+                        <div class="about-card">
+                            <h3>💬 Community-Driven</h3>
+                            <p>Your feedback matters. Help us make this guide better through suggestions and ideas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How It's Built -->
+                <div class="content-section">
+                    <h2>How It's Built</h2>
+                    <p><strong>This entire site is built with:</strong></p>
+                    <ul class="feature-list">
+                        <li><strong>HTML</strong> - Semantic structure and accessibility</li>
+                        <li><strong>CSS</strong> - Clean, responsive design (no frameworks)</li>
+                        <li><strong>JavaScript</strong> - Simple, vanilla JavaScript for interactivity</li>
+                        <li><strong>No External Dependencies</strong> - Everything is lightweight and fast</li>
+                        <li><strong>GitHub Pages</strong> - Hosted freely and openly on GitHub</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <strong>Philosophy:</strong> We practice what we preach. This guide is built on open-source principles, uses no proprietary software, and demonstrates that simple, effective web design doesn't require complex frameworks.
+                    </div>
+                </div>
+
+                <!-- Project Details -->
+                <div class="content-section">
+                    <h2>Project Details</h2>
+                    <div class="about-grid">
+                        <div class="about-card">
+                            <h3>🎯 Type</h3>
+                            <p>School Project / Educational Resource</p>
+                        </div>
+                        <div class="about-card">
+                            <h3>📝 Purpose</h3>
+                            <p>Learn web development and teach others about Linux</p>
+                        </div>
+                        <div class="about-card">
+                            <h3>🔓 License</h3>
+                            <p>Open to use, modify, and share (educational purposes)</p>
+                        </div>
+                        <div class="about-card">
+                            <h3>📍 Repository</h3>
+                            <p><a href="https://github.com/Zkboiz/linux-distros-guide" target="_blank" style="color: white; text-decoration: underline;">View on GitHub</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Features -->
+                <div class="content-section">
+                    <h2>Key Features</h2>
+                    <ul class="feature-list">
+                        <li>✅ <strong>Beginner-Friendly</strong> - Written in simple, clear language</li>
+                        <li>✅ <strong>Responsive Design</strong> - Works perfectly on mobile and desktop</li>
+                        <li>✅ <strong>No Paywalls</strong> - Completely free to access and use</li>
+                        <li>✅ <strong>Fast Loading</strong> - No bloat, just pure HTML/CSS/JS</li>
+                        <li>✅ <strong>Accessible</strong> - Built with semantic HTML for everyone</li>
+                        <li>✅ <strong>Community Feedback</strong> - Your suggestions help us improve</li>
+                    </ul>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="content-section">
+                    <h2>Disclaimer</h2>
+                    <p>This is a <strong>school project created for educational purposes</strong>. While we strive for accuracy, Linux is a vast ecosystem and we recommend checking official documentation for the most up-to-date information.</p>
+                    <p>This guide is a starting point for your Linux journey, not a complete reference. Always research and verify information before making decisions about which distribution to use.</p>
+                </div>
+
+                <!-- Get Involved -->
+                <div class="content-section">
+                    <h2>Get Involved</h2>
+                    <p>Like what you see? Here's how you can help:</p>
+                    <ul class="feature-list">
+                        <li><strong>Share Feedback</strong> - Use our <a href="suggestions.html">suggestions page</a> to report issues or suggest improvements</li>
+                        <li><strong>Report Errors</strong> - Found a mistake? Let us know!</li>
+                        <li><strong>Suggest Topics</strong> - What else should we cover?</li>
+                        <li><strong>Share the Guide</strong> - Help fellow beginners discover Linux</li>
+                    </ul>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="cta-section">
+                    <h3>Ready to Learn?</h3>
+                    <p>Start your Linux journey today</p>
+                    <a href="index.html" class="btn btn-primary">Go Home</a>
+                    <a href="what-is-linux.html" class="btn btn-secondary" style="margin-left: var(--spacing-md);">Learn About Linux</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="what-is-linux.html">What Is Linux?</a></li>
+                        <li><a href="distributions.html">Distributions</a></li>
+                        <li><a href="compare.html">Compare</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="suggestions.html">Suggestions</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>A beginner-friendly guide to Linux distributions. Made for learning.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Linux Distros Guide. All rights reserved.</p>
+                <p>This is a school project. <a href="about.html">Learn more →</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/nav.js"></script>
+</body>
+</html>
