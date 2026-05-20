@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Is Linux? - Linux Distros Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* What Is Linux Page Specific Styles */
+        .page-section {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .content-section h2 {
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: var(--spacing-md);
+        }
+
+        .content-section p {
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-lg);
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background-color: var(--secondary-color);
+            border-left: 4px solid var(--primary-color);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+            border-radius: var(--border-radius);
+        }
+
+        .highlight-box strong {
+            color: var(--primary-color);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .feature-list li {
+            padding: var(--spacing-md) 0;
+            padding-left: var(--spacing-lg);
+            position: relative;
+            color: var(--text-dark);
+            font-size: var(--font-size-lg);
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .comparison-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .comparison-item {
+            background-color: var(--secondary-color);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+        }
+
+        .comparison-item h4 {
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.1rem;
+        }
+
+        .comparison-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .comparison-item li {
+            padding: var(--spacing-xs) 0;
+            color: var(--text-light);
+        }
+
+        .misconception {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+            border-radius: var(--border-radius);
+        }
+
+        .misconception strong {
+            color: #92400e;
+        }
+
+        .misconception p {
+            margin: 0;
+        }
+
+        .next-steps {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-top: var(--spacing-2xl);
+        }
+
+        .next-steps p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--spacing-md);
+        }
+
+        @media (max-width: 767px) {
+            .comparison-box {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🐧</span>
+                <span class="logo-text">Linux Distros</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="what-is-linux.html" class="nav-link active">What Is Linux?</a></li>
+                <li><a href="distributions.html" class="nav-link">Distributions</a></li>
+                <li><a href="compare.html" class="nav-link">Compare</a></li>
+                <li><a href="getting-started.html" class="nav-link">Getting Started</a></li>
+                <li><a href="suggestions.html" class="nav-link">Suggestions</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Page Header -->
+        <section class="hero" style="min-height: 300px;">
+            <div class="hero-content">
+                <h1>What Is Linux?</h1>
+                <p>The basics for beginners</p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section style="padding: var(--spacing-2xl) 0;">
+            <div class="container page-section">
+                <!-- Introduction -->
+                <div class="content-section">
+                    <h2>Linux: The Foundation</h2>
+                    <p>Linux is a <strong>free, open-source operating system</strong> that powers everything from smartphones to servers to supercomputers. It's similar to Windows or macOS, but with some key differences that make it special.</p>
+                    
+                    <div class="highlight-box">
+                        <strong>Simple Definition:</strong> Linux is a core piece of software (called a "kernel") that manages your computer's hardware. People add other software around it to create different operating systems called "distributions."
+                    </div>
+                </div>
+
+                <!-- Why Linux? -->
+                <div class="content-section">
+                    <h2>Why Linux Matters</h2>
+                    <ul class="feature-list">
+                        <li><strong>Free</strong> - No licensing fees. Ever.</li>
+                        <li><strong>Open Source</strong> - Anyone can see and modify the code. Transparency and trust.</li>
+                        <li><strong>Secure</strong> - Strong security features and a large community keeping it safe.</li>
+                        <li><strong>Stable</strong> - Servers running Linux can run for years without crashing.</li>
+                        <li><strong>Flexible</strong> - Works on old computers and brand new servers equally well.</li>
+                        <li><strong>Community-Driven</strong> - Millions of people contribute and help each other.</li>
+                    </ul>
+                </div>
+
+                <!-- Linux vs Others -->
+                <div class="content-section">
+                    <h2>Linux vs Windows vs macOS</h2>
+                    <div class="comparison-box">
+                        <div class="comparison-item">
+                            <h4>💻 Windows</h4>
+                            <ul>
+                                <li>Made by Microsoft</li>
+                                <li>Costs money to buy</li>
+                                <li>Very common on desktops</li>
+                                <li>Easier for beginners</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-item">
+                            <h4>🍎 macOS</h4>
+                            <ul>
+                                <li>Made by Apple</li>
+                                <li>Only on Apple computers</li>
+                                <li>Costs money with hardware</li>
+                                <li>Popular with designers</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="comparison-box">
+                        <div class="comparison-item">
+                            <h4>🐧 Linux</h4>
+                            <ul>
+                                <li>Community-made</li>
+                                <li>Completely free</li>
+                                <li>Works on any computer</li>
+                                <li>Powerful and flexible</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-item">
+                            <h4>✨ Best For</h4>
+                            <ul>
+                                <li>Learning & exploring</li>
+                                <li>Developers</li>
+                                <li>Servers worldwide</li>
+                                <li>Budget-conscious users</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Common Misconceptions -->
+                <div class="content-section">
+                    <h2>Common Misconceptions</h2>
+                    
+                    <div class="misconception">
+                        <strong>❌ "Linux is too hard for beginners"</strong>
+                        <p>Modern Linux distributions like Ubuntu and Linux Mint are just as beginner-friendly as Windows. Many people switch and never look back!</p>
+                    </div>
+
+                    <div class="misconception">
+                        <strong>❌ "Linux is only for programmers"</strong>
+                        <p>You don't need to code to use Linux. Many distros come with user-friendly graphical interfaces. It's great for everyday tasks too.</p>
+                    </div>
+
+                    <div class="misconception">
+                        <strong>❌ "Linux has no software"</strong>
+                        <p>Linux has thousands of free applications. Web browsers, office suites, media players, games—everything you need is available.</p>
+                    </div>
+
+                    <div class="misconception">
+                        <strong>❌ "I can't play games on Linux"</strong>
+                        <p>Linux gaming has grown massively. Steam, Epic Games, and many publishers now support Linux. The library keeps growing.</p>
+                    </div>
+
+                    <div class="misconception">
+                        <strong>❌ "Linux won't work with my hardware"</strong>
+                        <p>Linux runs on almost any computer—old, new, high-end, budget. Many older computers get a new life with Linux!</p>
+                    </div>
+                </div>
+
+                <!-- Key Concepts -->
+                <div class="content-section">
+                    <h2>Key Concepts to Know</h2>
+                    
+                    <h3 style="color: var(--text-dark); margin-top: var(--spacing-lg);">The Kernel</h3>
+                    <p>The core of Linux that manages your hardware (CPU, memory, storage). It's the "brain" of the system.</p>
+
+                    <h3 style="color: var(--text-dark); margin-top: var(--spacing-lg);">Distributions (Distros)</h3>
+                    <p>Different organizations package the Linux kernel with different software to create unique operating systems. Ubuntu, Fedora, Debian—they're all Linux, but with different flavors.</p>
+
+                    <h3 style="color: var(--text-dark); margin-top: var(--spacing-lg);">Open Source</h3>
+                    <p>The source code is freely available for anyone to see, modify, and share. This transparency builds trust and security.</p>
+
+                    <h3 style="color: var(--text-dark); margin-top: var(--spacing-lg);">Free</h3>
+                    <p>Linux is free as in "freedom" and free as in "no cost." You can download, install, and use it without paying anything.</p>
+                </div>
+
+                <!-- Stats -->
+                <div class="content-section">
+                    <h2>Linux by the Numbers</h2>
+                    <div class="comparison-box">
+                        <div class="comparison-item">
+                            <h4>📱 Smartphones</h4>
+                            <p>Over 3 billion Android devices run Linux</p>
+                        </div>
+                        <div class="comparison-item">
+                            <h4>🌐 Web Servers</h4>
+                            <p>~90% of cloud infrastructure runs Linux</p>
+                        </div>
+                    </div>
+                    <div class="comparison-box">
+                        <div class="comparison-item">
+                            <h4>💾 Supercomputers</h4>
+                            <p>99% of the world's fastest computers run Linux</p>
+                        </div>
+                        <div class="comparison-item">
+                            <h4>👥 Community</h4>
+                            <p>Millions of developers worldwide contribute</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Steps -->
+                <div class="next-steps">
+                    <p>Ready to learn more?</p>
+                    <a href="distributions.html" class="btn btn-primary">Explore Popular Distros</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="what-is-linux.html">What Is Linux?</a></li>
+                        <li><a href="distributions.html">Distributions</a></li>
+                        <li><a href="compare.html">Compare</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="suggestions.html">Suggestions</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>A beginner-friendly guide to Linux distributions. Made for learning.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Linux Distros Guide. All rights reserved.</p>
+                <p>This is a school project. <a href="about.html">Learn more →</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/nav.js"></script>
+</body>
+</html>
