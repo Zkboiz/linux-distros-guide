@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started - Linux Distros Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🐧</span>
+                <span class="logo-text">Linux Distros</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="what-is-linux.html" class="nav-link">What Is Linux?</a></li>
+                <li><a href="distributions.html" class="nav-link">Distributions</a></li>
+                <li><a href="compare.html" class="nav-link">Compare</a></li>
+                <li><a href="getting-started.html" class="nav-link active">Getting Started</a></li>
+                <li><a href="suggestions.html" class="nav-link">Suggestions</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" style="min-height: 300px;">
+            <div class="hero-content">
+                <h1>Getting Started with Linux</h1>
+                <p>Your guide to installing and starting your Linux journey</p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section style="padding: var(--spacing-2xl) 0;">
+            <div class="container page-section">
+                <!-- Introduction -->
+                <div class="intro-text">
+                    <h2>Welcome to Linux</h2>
+                    <p>Starting with Linux can feel overwhelming, but we're here to make it simple. Follow these steps to install and explore your new operating system.</p>
+                </div>
+
+                <!-- Steps to Get Started -->
+                <div class="guide-section">
+                    <h3>1. Choose Your Linux Distribution</h3>
+                    <p>Not all Linux distributions are the same. If you're a beginner, we recommend Ubuntu or Linux Mint. They are user-friendly and beginner-focused. Explore our <a href="distributions.html">Distributions Page</a> for more details.</p>
+
+                    <h3>2. Check System Requirements</h3>
+                    <p>Ensure your computer meets the requirements for your chosen distribution. Most beginner-friendly options work well on modern hardware. As a guideline:</p>
+                    <ul>
+                        <li>Processor: 1 GHz or faster (64-bit recommended)</li>
+                        <li>RAM: 2 GB or more</li>
+                        <li>Storage: At least 25 GB of free space</li>
+                        <li>Bootable USB or DVD drive</li>
+                    </ul>
+
+                    <h3>3. Download the ISO File</h3>
+                    <p>Visit the official website of your chosen Linux distribution and download the ISO file. For Ubuntu, head to <a href="https://ubuntu.com/download">Ubuntu Downloads</a>. For Linux Mint, visit <a href="https://linuxmint.com/download.php">Linux Mint Downloads</a>.</p>
+
+                    <h3>4. Create a Bootable USB</h3>
+                    <p>Use tools like Rufus (for Windows) or Balena Etcher (cross-platform) to create a bootable USB drive from the downloaded ISO file. Follow the instructions on the tool's official website for guidance.</p>
+
+                    <h3>5. Install Linux</h3>
+                    <p>Insert the bootable USB into your computer and restart. Access the boot menu (usually by pressing <kbd>F12</kbd> or <kbd>ESC</kbd>) during startup and select your USB. Follow the installation steps provided by the installer.</p>
+
+                    <h3>6. Post-installation Setup</h3>
+                    <p>After installation, update your system and install necessary drivers. You can do this easily with these commands in the terminal:</p>
+                    <pre><code>sudo apt update && sudo apt upgrade</code></pre>
+
+                    <h3>7. Explore Linux</h3>
+                    <p>Start exploring! Try out pre-installed applications and explore the Linux community for tips, support, and customization.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="what-is-linux.html">What Is Linux?</a></li>
+                        <li><a href="distributions.html">Distributions</a></li>
+                        <li><a href="compare.html">Compare</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="suggestions.html">Suggestions</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>A beginner-friendly guide to Linux distributions. Made for learning.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Linux Distros Guide. All rights reserved.</p>
+                <p>This is a school project. <a href="about.html">Learn more →</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/nav.js"></script>
+</body>
+</html>
