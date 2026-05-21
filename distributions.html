@@ -5,6 +5,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Popular Distributions - Linux Distros Guide</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Distributions Page Specific Styles */
+        .page-section {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .intro-text {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .distro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .distro-card {
+            background-color: var(--background);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .distro-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .distro-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .distro-name {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .distro-tagline {
+            font-size: var(--font-size-base);
+            opacity: 0.9;
+        }
+
+        .distro-body {
+            padding: var(--spacing-lg);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .distro-description {
+            color: var(--text-light);
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-base);
+            line-height: 1.7;
+        }
+
+        .distro-features {
+            list-style: none;
+            margin: var(--spacing-md) 0;
+            flex-grow: 1;
+        }
+
+        .distro-features li {
+            padding: var(--spacing-xs) 0;
+            color: var(--text-dark);
+            font-size: var(--font-size-base);
+        }
+
+        .distro-features li:before {
+            content: "✓ ";
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: var(--spacing-xs);
+        }
+
+        .distro-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            padding: var(--spacing-md) 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .distro-meta-item {
+            text-align: center;
+        }
+
+        .distro-meta-label {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .distro-meta-value {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .distro-link {
+            margin-top: auto;
+        }
+
+        .distro-link .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .beginner-badge {
+            display: inline-block;
+            background-color: #d1fae5;
+            color: #065f46;
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        @media (max-width: 767px) {
+            .distro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .distro-meta {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -23,35 +174,197 @@
                 <li><a href="suggestions.html" class="nav-link">Suggestions</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
             </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
     <main>
-        <section class="page-section">
-            <h1>Popular Distributions</h1>
-            <p>Explore beginner-friendly Linux distributions with great communities.</p>
+        <!-- Page Header -->
+        <section class="hero" style="min-height: 300px;">
+            <div class="hero-content">
+                <h1>Popular Distributions</h1>
+                <p>Explore beginner-friendly Linux distros</p>
+            </div>
         </section>
 
-        <div class="distro-grid">
-            <article class="distro-card">
-                <div class="distro-header">
-                    <h2>🐧 Ubuntu</h2>
+        <!-- Main Content -->
+        <section style="padding: var(--spacing-2xl) 0;">
+            <div class="container page-section">
+                <!-- Intro -->
+                <div class="intro-text">
+                    <h2>Find Your Perfect Linux</h2>
+                    <p>These distributions are popular with beginners because they're easy to install, well-documented, and have large communities ready to help.</p>
                 </div>
-                <p>Ubuntu provides a great user-friendly structure for beginners with six-month updates!</p>
-            </article>
 
-            <article class="distro-card">
-                <div class="distro-header">
-                    <h2>🌿 Linux Mint </h2>
+                <!-- Distributions Grid -->
+                <div class="distro-grid">
+                    <!-- Ubuntu -->
+                    <article class="distro-card">
+                        <div class="distro-header">
+                            <div class="distro-name">🐧 Ubuntu</div>
+                            <div class="distro-tagline">The Most Popular</div>
+                        </div>
+                        <div class="distro-body">
+                            <span class="beginner-badge">⭐ Best for Beginners</span>
+                            <p class="distro-description">Ubuntu is the most beginner-friendly Linux distribution. It's based on Debian and backed by Canonical.</p>
+                            <ul class="distro-features">
+                                <li>User-friendly desktop</li>
+                                <li>Huge community support</li>
+                                <li>Easy installation</li>
+                                <li>Regular updates (every 6 months)</li>
+                                <li>Excellent documentation</li>
+                            </ul>
+                            <div class="distro-meta">
+                                <div class="distro-meta-item">
+                                    <div class="distro-meta-label">Ease of Use</div>
+                                    <div class="distro-meta-value">⭐⭐⭐⭐⭐</div>
+                                </div>
+                                <div class="distro-meta-item">
+                                    <div class="distro-meta-label">Learning Curve</div>
+                                    <div class="distro-meta-value">Gentle</div>
+                                </div>
+                            </div>
+                            <div class="distro-link">
+                                <a href="getting-started.html" class="btn btn-primary">Get Started</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Linux Mint -->
+                    <article class="distro-card">
+                        <div class="distro-header">
+                            <div class="distro-name">🌿 Linux Mint</div>
+                            <div class="distro-tagline">Windows Users Welcome</div>
+                        </div>
+                        <div class="distro-body">
+                            <span class="beginner-badge">⭐ Best for Beginners</span>
+                            <p class="distro-description">Linux Mint is based on Ubuntu and aims to be even more beginner-friendly with a familiar desktop environment.</p>
+                            <ul class="distro-features">
+                                <li>Familiar Windows-like interface</li>
+                                <li>Pre-installed software</li>
+                                <li>Very stable</li>
+                                <li>Great for switching from Windows</li>
+                                <li>Active community</li>
+                            </ul>
+                            <div class="distro-meta">
+                                <div class="distro-meta-item">
+                                    <div class="distro-meta-label">Ease of Use</div>
+                                    <div class="distro-meta-value">⭐⭐⭐⭐⭐</div>
+                                </div>
+                                <div class="distro-meta-item">
+                                    <div class="distro-meta-label">Learning Curve</div>
+                                    <div class="distro-meta-value">Very Gentle</div>
+                                </div>
+                            </div>
+                            <div class="distro-link">
+                                <a href="getting-started.html" class="btn btn-primary">Get Started</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Fedora -->
+                    <article class="distro-card">
+                        <div class="distro-header">
+                            <div class="distro-name">🎩 Fedora</div>
+                            <div class="distro-tagline">Cutting Edge</div>
+                        </div>
+                        <div class="distro-body">
+                            <p class="distro-description">Fedora is backed by Red Hat and focuses on innovation. Perfect for learners who want to explore newer technologies.</p>
+                            <ul class="distro-features">
+                                <li>Latest software versions</li>
+                                <li>Good for developers</li>
+                                <li>Strong security</li>
+                                <li>Supported by Red Hat</li>
+                                <li>Great documentation</li>
+                            </ul>
+                            <div class="distro-meta">
+                                <div class="distro-meta-item">
+                                    <div class="distro-meta-label">Ease of Use</div>
+                                    <div class="distro-meta-value">⭐⭐⭐⭐</div>
+                                </div>
+                                <div class="distro-meta-item">
+                                    <div class="distro-meta-label">Learning Curve</div>
+                                    <div class="distro-meta-value">Moderate</div>
+                                </div>
+                            </div>
+                            <div class="distro-link">
+                                <a href="getting-started.html" class="btn btn-primary">Get Started</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Debian -->
+                    <article class="distro-card">
+                        <div class="distro-header">
+                            <div class="distro-name">🔴 Debian</div>
+                            <div class="distro-tagline">The Stable Foundation</div>
+                        </div>
+                        <div class="distro-body">
+                            <p class="distro-description">Debian is known for stability and is the base for many other distros including Ubuntu. Great for learning Linux fundamentals.</p>
+                            <ul class="distro-features">
+                                <li>Very stable and reliable</li>
+                                <li>Huge package repository</li>
+                                <li>Free and open-source</li>
+                                <li>Community-driven</li>
+                                <li>Perfect for servers</li>
+                            </ul>
+                            <div class="distro-meta">
+                                <div class="distro-meta-item">
+                                    <div class="distro-meta-label">Ease of Use</div>
+                                    <div class="distro-meta-value">⭐⭐⭐</div>
+                                </div>
+                                <div class="distro-meta-item">
+                                    <div class="distro-meta-label">Learning Curve</div>
+                                    <div class="distro-meta-value">Moderate</div>
+                                </div>
+                            </div>
+                            <div class="distro-link">
+                                <a href="getting-started.html" class="btn btn-primary">Get Started</a>
+                            </div>
+                        </div>
+                    </article>
                 </div>
-                Recommended for Windows migrants alongside some GUI-friendly defaults
-            </article>
-        </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Linux Distros Guide. All rights reserved.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="what-is-linux.html">What Is Linux?</a></li>
+                        <li><a href="distributions.html">Distributions</a></li>
+                        <li><a href="compare.html">Compare</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="suggestions.html">Suggestions</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>A beginner-friendly guide to Linux distributions. Made for learning.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Linux Distros Guide. All rights reserved.</p>
+                <p>This is a school project. <a href="about.html">Learn more →</a></p>
+            </div>
+        </div>
     </footer>
+
+    <script src="js/nav.js"></script>
 </body>
 </html>
