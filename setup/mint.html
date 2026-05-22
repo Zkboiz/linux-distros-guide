@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Mint Setup Guide - Linux Distributions Guide</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .breadcrumb {
+            margin-bottom: var(--spacing-lg);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+        }
+
+        .setup-section {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .setup-content h2 {
+            color: var(--text-dark);
+            margin-top: var(--spacing-2xl);
+            margin-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: var(--spacing-md);
+        }
+
+        .setup-content h3 {
+            color: var(--text-dark);
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .setup-content p {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.8;
+        }
+
+        .setup-content ol, .setup-content ul {
+            margin-bottom: var(--spacing-md);
+            padding-left: var(--spacing-lg);
+        }
+
+        .setup-content li {
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-dark);
+        }
+
+        .highlight-box {
+            background-color: var(--secondary-color);
+            border-left: 4px solid var(--primary-color);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+            border-radius: var(--border-radius);
+        }
+
+        .requirement-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .requirement-item {
+            background-color: var(--secondary-color);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+        }
+
+        .requirement-item strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .next-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-top: var(--spacing-2xl);
+        }
+
+        .next-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--spacing-md);
+        }
+
+        @media (max-width: 767px) {
+            .requirement-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Linux Distributions Guide</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../what-is-linux.html" class="nav-link">What Is Linux?</a></li>
+                <li><a href="../distributions.html" class="nav-link">Distributions</a></li>
+                <li><a href="../installation.html" class="nav-link active">Installation</a></li>
+                <li><a href="../feedback.html" class="nav-link">Feedback</a></li>
+                <li><a href="../about.html" class="nav-link">About</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Page Header -->
+        <section class="hero" style="min-height: 300px;">
+            <div class="hero-content">
+                <h1>Setting Up Linux Mint</h1>
+                <p>Complete installation guide for Linux Mint</p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section style="padding: var(--spacing-2xl) 0;">
+            <div class="container setup-section">
+                <!-- Breadcrumb -->
+                <div class="breadcrumb">
+                    <a href="../index.html">Home</a> > 
+                    <a href="../installation.html">Installation</a> > 
+                    <span>Linux Mint Setup</span>
+                </div>
+
+                <div class="setup-content">
+                    <!-- System Requirements -->
+                    <h2>System Requirements</h2>
+                    <p>Linux Mint is designed to be lightweight and works excellently on various hardware configurations:</p>
+                    
+                    <div class="requirement-grid">
+                        <div class="requirement-item">
+                            <strong>Processor</strong>
+                            <p>Dual-core processor, 1.5GHz or faster</p>
+                        </div>
+                        <div class="requirement-item">
+                            <strong>RAM</strong>
+                            <p>1GB minimum, 2GB recommended</p>
+                        </div>
+                        <div class="requirement-item">
+                            <strong>Storage</strong>
+                            <p>15GB disk space minimum</p>
+                        </div>
+                        <div class="requirement-item">
+                            <strong>Display</strong>
+                            <p>1024x768 resolution minimum</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <strong>Why Linux Mint?</strong> Linux Mint is based on Ubuntu but optimized for ease of use, especially for Windows users. It requires fewer resources and provides an intuitive desktop experience out of the box.
+                    </div>
+
+                    <!-- Downloading Linux Mint -->
+                    <h2>Downloading Linux Mint</h2>
+                    <ol>
+                        <li>Visit the official Linux Mint website: <strong>linuxmint.com</strong></li>
+                        <li>Go to the Download section</li>
+                        <li>Choose your preferred desktop environment (Cinnamon is recommended for beginners)</li>
+                        <li>Select the 64-bit version (unless you have 32-bit hardware)</li>
+                        <li>Save the ISO file to your computer (approximately 2.5GB)</li>
+                        <li>You'll need a USB drive with at least 4GB capacity</li>
+                    </ol>
+
+                    <div class="highlight-box">
+                        <strong>Desktop Environments:</strong> Linux Mint offers Cinnamon (recommended), MATE, and Xfce. Cinnamon is most Windows-like and beginner-friendly.
+                    </div>
+
+                    <!-- Creating Installation Media -->
+                    <h2>Creating Installation Media</h2>
+                    <p>You need to create a bootable USB drive from the ISO file:</p>
+                    
+                    <h3>Windows Users:</h3>
+                    <ol>
+                        <li>Download Etcher or Rufus (free tools)</li>
+                        <li>Insert your USB drive</li>
+                        <li>Open the tool and select your Linux Mint ISO file</li>
+                        <li>Select your USB drive as the target</li>
+                        <li>Click "Flash" or "Write" and wait for completion</li>
+                    </ol>
+
+                    <h3>Mac Users:</h3>
+                    <ol>
+                        <li>Download Etcher from balena.io/etcher</li>
+                        <li>Insert your USB drive</li>
+                        <li>Open Etcher and select your Linux Mint ISO</li>
+                        <li>Select the USB drive</li>
+                        <li>Click "Flash" and wait for completion</li>
+                    </ol>
+
+                    <h3>Linux Users:</h3>
+                    <ol>
+                        <li>Use the terminal command: <code>sudo dd if=linuxmint.iso of=/dev/sdX bs=4M</code></li>
+                        <li>Replace sdX with your USB drive identifier (check with <code>lsblk</code>)</li>
+                        <li>Wait for the operation to complete</li>
+                    </ol>
+
+                    <!-- Installation Process -->
+                    <h2>Installation Process</h2>
+                    
+                    <h3>Step 1: Boot from USB</h3>
+                    <ol>
+                        <li>Insert the bootable USB drive into your computer</li>
+                        <li>Restart your computer</li>
+                        <li>Press the boot key during startup (usually F12, ESC, or DEL)</li>
+                        <li>Select the USB drive from the boot menu</li>
+                    </ol>
+
+                    <h3>Step 2: Linux Mint Live Environment</h3>
+                    <ol>
+                        <li>Linux Mint will load from the USB drive</li>
+                        <li>You'll see the desktop with a "Start Installation" icon</li>
+                        <li>Double-click the "Install Linux Mint" icon to begin</li>
+                    </ol>
+
+                    <h3>Step 3: Choose Language and Keyboard</h3>
+                    <ol>
+                        <li>Select your language</li>
+                        <li>Select your keyboard layout</li>
+                        <li>Click "Continue"</li>
+                    </ol>
+
+                    <h3>Step 4: Installation Type</h3>
+                    <ol>
+                        <li>Choose "Erase disk and install Linux Mint" for a fresh installation</li>
+                        <li>For dual-boot with Windows, select "Something Else"</li>
+                        <li>Click "Install Now" or "Continue"</li>
+                    </ol>
+
+                    <h3>Step 5: Time Zone and User Setup</h3>
+                    <ol>
+                        <li>Select your time zone from the map</li>
+                        <li>Enter your name and computer name</li>
+                        <li>Create a username and password (you'll need this to log in)</li>
+                        <li>Choose whether to log in automatically or require a password</li>
+                        <li>Click "Continue"</li>
+                    </ol>
+
+                    <h3>Step 6: Installation Complete</h3>
+                    <ol>
+                        <li>Wait for the installation to complete (usually 5-15 minutes)</li>
+                        <li>You'll see a completion message</li>
+                        <li>Click "Restart Now" to reboot into your new Linux Mint system</li>
+                        <li>Remove the USB drive when prompted</li>
+                    </ol>
+
+                    <!-- First Boot -->
+                    <h2>First Boot and Initial Setup</h2>
+                    <p>After restarting, you'll see the Linux Mint login screen:</p>
+                    <ol>
+                        <li>Enter your username and password</li>
+                        <li>Complete the welcome screen (optional but recommended)</li>
+                        <li>Linux Mint will suggest installing updates—it's recommended to accept</li>
+                        <li>You're now ready to use Linux Mint!</li>
+                    </ol>
+
+                    <!-- Essential First Steps -->
+                    <h2>Essential First Steps</h2>
+                    <h3>1. Update Your System</h3>
+                    <p>Keep Linux Mint secure and up-to-date:</p>
+                    <ol>
+                        <li>Open the "Update Manager" application</li>
+                        <li>Click "Refresh" to check for updates</li>
+                        <li>Review and install available updates</li>
+                    </ol>
+
+                    <h3>2. Install Additional Software</h3>
+                    <p>Open the "Software Manager" to find and install applications you need (web browser, productivity tools, media player, etc.).</p>
+
+                    <h3>3. Customize Your Desktop</h3>
+                    <p>Linux Mint's Cinnamon desktop is highly customizable. Right-click on the desktop and panel to access preferences and personalization options.</p>
+
+                    <!-- Troubleshooting -->
+                    <h2>Troubleshooting</h2>
+                    
+                    <h3>Computer Won't Boot from USB</h3>
+                    <ul>
+                        <li>Check that you're pressing the correct boot key for your computer</li>
+                        <li>Verify the USB drive was properly created</li>
+                        <li>Try a different USB port</li>
+                        <li>Check if Secure Boot is enabled in BIOS (try disabling it)</li>
+                    </ul>
+
+                    <h3>Installation Freezes</h3>
+                    <ul>
+                        <li>Don't interrupt the process; it may take longer on slower systems</li>
+                        <li>Try disabling Secure Boot in BIOS</li>
+                        <li>If it persists, try a different USB drive</li>
+                    </ul>
+
+                    <h3>No Network Connection After Installation</h3>
+                    <ul>
+                        <li>Open "Network Settings" and verify connection</li>
+                        <li>Try reconnecting to Wi-Fi or Ethernet</li>
+                        <li>Restart the network manager if needed</li>
+                    </ul>
+
+                    <h3>Need Help?</h3>
+                    <ul>
+                        <li>Linux Mint Community Forum: forums.linuxmint.com</li>
+                        <li>Linux Mint Documentation: linuxmint.com/documentation</li>
+                        <li>Ask for help in Linux forums and communities</li>
+                    </ul>
+
+                    <!-- Next Steps -->
+                    <div class="next-section">
+                        <h3>Congratulations!</h3>
+                        <p>You've successfully installed Linux Mint. Enjoy your new system!</p>
+                        <a href="../index.html" class="btn btn-primary">Back to Home</a>
+                        <a href="../distributions.html" class="btn btn-secondary" style="margin-left: var(--spacing-md);">Explore Other Distros</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="../what-is-linux.html">What Is Linux?</a></li>
+                        <li><a href="../distributions.html">Distributions</a></li>
+                        <li><a href="../installation.html">Installation</a></li>
+                        <li><a href="../compare.html">Comparison</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="../feedback.html">Send Feedback</a></li>
+                        <li><a href="../about.html">About This Project</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>A professional learning resource for Linux distributions. Designed for beginners.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Linux Distributions Guide. All rights reserved.</p>
+                <p><a href="../about.html">Learn more about this project</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/nav.js"></script>
+</body>
+</html>
