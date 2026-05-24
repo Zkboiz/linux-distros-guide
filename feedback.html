@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Feedback - Linux Distributions Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .feedback-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .feedback-intro {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .feedback-intro h2 {
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .feedback-intro p {
+            font-size: var(--font-size-lg);
+            color: var(--text-light);
+        }
+
+        .feedback-form {
+            background-color: var(--background);
+            padding: var(--spacing-2xl);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-section-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-top: var(--spacing-2xl);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .form-section-title:first-child {
+            margin-top: 0;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .btn-submit {
+            width: 100%;
+            margin-top: var(--spacing-lg);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-field-required {
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .additional-info {
+            margin-top: var(--spacing-2xl);
+            padding-top: var(--spacing-2xl);
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .additional-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .additional-info a {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .helpful-tip {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .helpful-tip strong {
+            color: #92400e;
+        }
+
+        .helpful-tip p {
+            color: #78350f;
+            margin-bottom: 0;
+        }
+
+        .form-success {
+            background-color: #d1fae5;
+            border-left: 4px solid var(--accent-color);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+            display: none;
+        }
+
+        .form-success h3 {
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-sm);
+            margin-top: 0;
+        }
+
+        .form-success p {
+            color: #065f46;
+            margin: 0;
+        }
+
+        .form-error {
+            background-color: #fee2e2;
+            border-left: 4px solid #ef4444;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-lg);
+            display: none;
+        }
+
+        .form-error h3 {
+            color: #dc2626;
+            margin-bottom: var(--spacing-sm);
+            margin-top: 0;
+        }
+
+        .form-error p {
+            color: #7f1d1d;
+            margin: 0;
+        }
+
+        @media (max-width: 479px) {
+            .feedback-form {
+                padding: var(--spacing-lg);
+            }
+
+            .btn-submit {
+                padding: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Linux Distributions Guide</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="what-is-linux.html" class="nav-link">What Is Linux?</a></li>
+                <li><a href="distributions.html" class="nav-link">Distributions</a></li>
+                <li><a href="installation.html" class="nav-link">Installation</a></li>
+                <li><a href="feedback.html" class="nav-link active">Feedback</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Page Header -->
+        <section class="hero" style="min-height: 300px;">
+            <div class="hero-content">
+                <h1>Send Your Feedback</h1>
+                <p>Help us improve this learning resource</p>
+            </div>
+        </section>
+
+        <!-- Feedback Section -->
+        <section style="padding: var(--spacing-2xl) 0;">
+            <div class="container feedback-container">
+                <!-- Intro Text -->
+                <div class="feedback-intro">
+                    <h2>We Value Your Input</h2>
+                    <p>Have suggestions for improvements? Found an error? Want to recommend new topics? Please share your feedback with us. All submissions are reviewed by our team.</p>
+                </div>
+
+                <!-- Error Message (Hidden by default) -->
+                <div class="form-error" id="errorMessage">
+                    <h3>Error</h3>
+                    <p id="errorText"></p>
+                </div>
+
+                <!-- Success Message (Hidden by default) -->
+                <div class="form-success" id="successMessage">
+                    <h3>Thank You!</h3>
+                    <p>Your feedback has been submitted successfully. Our team will review it and get back to you soon.</p>
+                </div>
+
+                <!-- Feedback Form -->
+                <form id="feedbackForm" class="feedback-form">
+                    <!-- Your Information Section -->
+                    <div class="form-section-title">Your Information</div>
+
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <label for="name">
+                            Your Name
+                            <span class="form-field-required">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            placeholder="John Doe" 
+                            required
+                            maxlength="100"
+                            autocomplete="name"
+                        >
+                        <p class="form-note">We'd like to credit you for your feedback</p>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label for="email">Email Address (optional)</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="your.email@example.com"
+                            maxlength="255"
+                            autocomplete="email"
+                        >
+                        <p class="form-note">So we can follow up with you if needed</p>
+                    </div>
+
+                    <!-- Feedback Section -->
+                    <div class="form-section-title">Your Feedback</div>
+
+                    <!-- Helpful Tip -->
+                    <div class="helpful-tip">
+                        <strong>Tip:</strong>
+                        <p>Be as specific as possible. Examples: "Add a section about...", "Fix the typo in...", "Include information about..."</p>
+                    </div>
+
+                    <!-- Suggestion Message -->
+                    <div class="form-group">
+                        <label for="suggestion">
+                            Your Suggestion or Comment
+                            <span class="form-field-required">*</span>
+                        </label>
+                        <textarea 
+                            id="suggestion" 
+                            name="suggestion" 
+                            placeholder="What would you like to suggest? Be as detailed as you'd like..."
+                            required
+                            maxlength="5000"
+                        ></textarea>
+                        <p class="form-note">Character limit: 5000</p>
+                    </div>
+
+                    <!-- Optional Link -->
+                    <div class="form-group">
+                        <label for="link">Reference Link (optional)</label>
+                        <input 
+                            type="url" 
+                            id="link" 
+                            name="link" 
+                            placeholder="https://example.com/resource"
+                            maxlength="2048"
+                        >
+                        <p class="form-note">Link to a resource, article, or reference (must start with http:// or https://)</p>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+                        Submit Feedback
+                    </button>
+                </form>
+
+                <!-- Additional Info -->
+                <div class="additional-info">
+                    <p>
+                        <strong>Questions?</strong> Check out our <a href="about.html">About page</a> or <a href="index.html">go back home</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="what-is-linux.html">What Is Linux?</a></li>
+                        <li><a href="distributions.html">Distributions</a></li>
+                        <li><a href="installation.html">Installation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="feedback.html">Send Feedback</a></li>
+                        <li><a href="about.html">About This Project</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>A professional learning resource for Linux distributions. Designed for beginners.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Linux Distributions Guide. All rights reserved.</p>
+                <p><a href="about.html">Learn more about this project</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/nav.js"></script>
+    <script>
+        // Handle form submission
+        document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Clear previous messages
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorText').textContent = '';
+
+            // Get form data
+            const submitBtn = document.getElementById('submitBtn');
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                suggestion: document.getElementById('suggestion').value.trim(),
+                link: document.getElementById('link').value.trim()
+            };
+
+            // Client-side validation
+            if (!formData.name) {
+                showError('Please enter your name');
+                return;
+            }
+
+            if (!formData.suggestion) {
+                showError('Please enter your feedback');
+                return;
+            }
+
+            if (formData.email && !isValidEmail(formData.email)) {
+                showError('Please enter a valid email address');
+                return;
+            }
+
+            if (formData.link && !isValidUrl(formData.link)) {
+                showError('Please enter a valid URL (starting with http:// or https://)');
+                return;
+            }
+
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            const originalText = submitBtn.textContent;
+            submitBtn.innerHTML = '<span class="loading-spinner"></span> Submitting...';
+
+            try {
+                // Send feedback to backend
+                const response = await fetch('/api/feedback', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+
+                    // Reset form
+                    document.getElementById('feedbackForm').reset();
+
+                    // Hide success message after 5 seconds
+                    setTimeout(function() {
+                        document.getElementById('successMessage').style.display = 'none';
+                    }, 5000);
+                } else {
+                    showError(result.message || 'An error occurred while submitting your feedback.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showError('Unable to submit feedback. Please check your connection and try again.');
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            document.getElementById('errorText').textContent = message;
+            errorDiv.style.display = 'block';
+            errorDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidUrl(url) {
+            try {
+                const urlObj = new URL(url);
+                return urlObj.protocol === 'http:' || urlObj.protocol === 'https:';
+            } catch (e) {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
