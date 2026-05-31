@@ -152,6 +152,128 @@
             margin: 0;
         }
 
+        /* Backend Code Section Styles */
+        .backend-section {
+            margin-top: var(--spacing-2xl);
+            padding-top: var(--spacing-2xl);
+            border-top: 2px solid var(--border-color);
+        }
+
+        .backend-toggle {
+            background-color: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .backend-toggle:hover {
+            background-color: var(--border-color);
+        }
+
+        .backend-toggle-icon {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .backend-toggle-icon.open {
+            transform: rotate(180deg);
+        }
+
+        .backend-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+
+        .backend-content.open {
+            max-height: 2000px;
+        }
+
+        .backend-body {
+            padding: var(--spacing-lg);
+        }
+
+        .backend-body h3 {
+            color: var(--primary-color);
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .backend-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .backend-body p {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .code-snippet {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            margin: var(--spacing-md) 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .backend-list {
+            list-style: none;
+            padding-left: 0;
+            margin: var(--spacing-md) 0;
+        }
+
+        .backend-list li {
+            padding: var(--spacing-sm) 0;
+            padding-left: 24px;
+            color: var(--text-dark);
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .backend-list li:before {
+            content: '▸';
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .copy-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: var(--spacing-sm);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
         @media (max-width: 479px) {
             .feedback-form {
                 padding: var(--spacing-lg);
@@ -159,6 +281,15 @@
 
             .btn-submit {
                 padding: var(--spacing-md);
+            }
+
+            .backend-body {
+                padding: var(--spacing-md);
+            }
+
+            .code-snippet {
+                font-size: 0.75rem;
+                padding: var(--spacing-sm);
             }
         }
     </style>
@@ -303,6 +434,82 @@
                         <strong>Questions?</strong> Check out our <a href="about.html">About page</a> or <a href="index.html">go back home</a>.
                     </p>
                 </div>
+
+                <!-- Backend Code Section -->
+                <div class="backend-section">
+                    <button class="backend-toggle" id="backendToggle">
+                        <span>How Does This Backend Work?</span>
+                        <span class="backend-toggle-icon" id="toggleIcon">▼</span>
+                    </button>
+                    
+                    <div class="backend-content" id="backendContent">
+                        <div class="backend-body">
+                            <h3>The Flask Backend Explained</h3>
+                            <p>This feedback form is powered by <strong>Flask</strong>, a simple Python framework. Here's how it works in plain English:</p>
+
+                            <h3>What Happens When You Submit?</h3>
+                            <ol class="backend-list" style="list-style: decimal; padding-left: 2rem;">
+                                <li><strong>You fill the form</strong> with your name, email (optional), suggestion, and link (optional)</li>
+                                <li><strong>You click Submit</strong> and the form sends your data to the backend</li>
+                                <li><strong>Flask receives the data</strong> from your browser</li>
+                                <li><strong>Flask checks everything</strong> - is the name filled? Is the email valid? Is the URL real?</li>
+                                <li><strong>If valid, Flask saves it</strong> to a JSON file (a simple text file)</li>
+                                <li><strong>Flask sends back a message</strong> saying "Success!" and your form shows the thank you message</li>
+                            </ol>
+
+                            <h3>Key Security Features</h3>
+                            <ul class="backend-list">
+                                <li>Email addresses must be real format (example@domain.com)</li>
+                                <li>URLs must start with http:// or https://</li>
+                                <li>Names can't be longer than 100 characters</li>
+                                <li>Suggestions can't be longer than 5000 characters</li>
+                                <li>All inputs are checked twice (once in your browser, once on the server)</li>
+                            </ul>
+
+                            <h3>The Core Code</h3>
+                            <p>Here's the simplified version of how Flask handles your feedback:</p>
+                            <div class="code-snippet"><code>@app.route('/api/feedback', methods=['POST'])
+def submit_feedback():
+    # 1. Get data from form
+    data = request.get_json()
+    
+    # 2. Validate all inputs
+    if not data.get('name'):
+        return error("Name required")
+    
+    # 3. Create feedback entry
+    feedback_entry = {
+        'name': data['name'],
+        'email': data['email'],
+        'suggestion': data['suggestion'],
+        'link': data['link'],
+        'timestamp': datetime.now(),
+        'status': 'pending'
+    }
+    
+    # 4. Save to file
+    feedback_list = load_feedback()
+    feedback_list.append(feedback_entry)
+    save_feedback(feedback_list)
+    
+    # 5. Send success message
+    return success("Thank you!")</code></div>
+
+                            <h3>What Happens to Your Data?</h3>
+                            <ul class="backend-list">
+                                <li><strong>Status "pending"</strong> - Your feedback is saved and waiting for review</li>
+                                <li><strong>Admin approval</strong> - An admin reads and approves your feedback</li>
+                                <li><strong>Status "approved"</strong> - Your feedback is now visible on the site</li>
+                                <li><strong>File storage</strong> - Everything is saved in a feedback_data.json file</li>
+                            </ul>
+
+                            <h3>Want to Learn More?</h3>
+                            <p>The complete Flask code is stored in <code>app.py</code> in the project. The frontend form (this page) sends data via JavaScript fetch() to Flask's API endpoint. Flask validates, saves, and responds. Simple, secure, and effective!</p>
+
+                            <button class="copy-btn" onclick="copyCodeExample()">Copy Code Example</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -340,6 +547,53 @@
 
     <script src="js/nav.js"></script>
     <script>
+        // Toggle backend explanation section
+        document.getElementById('backendToggle').addEventListener('click', function() {
+            const content = document.getElementById('backendContent');
+            const icon = document.getElementById('toggleIcon');
+            content.classList.toggle('open');
+            icon.classList.toggle('open');
+        });
+
+        // Copy code example
+        function copyCodeExample() {
+            const code = `@app.route('/api/feedback', methods=['POST'])
+def submit_feedback():
+    # 1. Get data from form
+    data = request.get_json()
+    
+    # 2. Validate all inputs
+    if not data.get('name'):
+        return error("Name required")
+    
+    # 3. Create feedback entry
+    feedback_entry = {
+        'name': data['name'],
+        'email': data['email'],
+        'suggestion': data['suggestion'],
+        'link': data['link'],
+        'timestamp': datetime.now(),
+        'status': 'pending'
+    }
+    
+    # 4. Save to file
+    feedback_list = load_feedback()
+    feedback_list.append(feedback_entry)
+    save_feedback(feedback_list)
+    
+    # 5. Send success message
+    return success("Thank you!")`;
+            
+            navigator.clipboard.writeText(code).then(function() {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(function() {
+                    btn.textContent = originalText;
+                }, 2000);
+            });
+        }
+
         // Handle form submission
         document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
             e.preventDefault();
