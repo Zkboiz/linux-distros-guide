@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Code - Linux Distributions Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .backend-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .backend-intro {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .backend-intro h2 {
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .backend-intro p {
+            font-size: var(--font-size-lg);
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .code-section {
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .code-section-title {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .code-block {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            margin: var(--spacing-lg) 0;
+            border: 1px solid var(--border-color);
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            box-shadow: var(--shadow-md);
+        }
+
+        .code-block code {
+            background-color: transparent;
+            color: #d4d4d4;
+            padding: 0;
+            font-size: 0.9rem;
+            border-radius: 0;
+        }
+
+        .code-line {
+            display: block;
+            padding: 0.2rem 0;
+        }
+
+        .code-keyword {
+            color: #569cd6;
+        }
+
+        .code-string {
+            color: #ce9178;
+        }
+
+        .code-comment {
+            color: #6a9955;
+        }
+
+        .code-function {
+            color: #dcdcaa;
+        }
+
+        .explanation-box {
+            background-color: var(--secondary-color);
+            border-left: 4px solid var(--primary-color);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .explanation-box h4 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+        }
+
+        .explanation-box p {
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        .explanation-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .explanation-list {
+            list-style: none;
+            padding-left: 0;
+            margin: var(--spacing-md) 0;
+        }
+
+        .explanation-list li {
+            padding: var(--spacing-sm) 0;
+            color: var(--text-dark);
+            position: relative;
+            padding-left: 24px;
+            line-height: 1.8;
+        }
+
+        .explanation-list li:before {
+            content: '▸';
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .api-endpoint {
+            background-color: #f3f4f6;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin: var(--spacing-md) 0;
+            border: 1px solid var(--border-color);
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .http-method {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+        }
+
+        .http-post {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .http-get {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-2xl) 0;
+        }
+
+        .feature-card {
+            background-color: var(--background);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-card h4 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-card p {
+            margin-bottom: 0;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .copy-button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: var(--spacing-md);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .copy-button:hover {
+            background-color: var(--primary-hover);
+            box-shadow: var(--shadow-md);
+        }
+
+        .copy-button:active {
+            transform: translateY(1px);
+        }
+
+        .file-label {
+            display: block;
+            background-color: var(--text-dark);
+            color: white;
+            padding: 0.5rem var(--spacing-md);
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            font-weight: 600;
+            font-size: 0.85rem;
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+
+        .code-wrapper {
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .code-wrapper .code-block {
+            margin: 0;
+            border-radius: 0;
+        }
+
+        .flow-diagram {
+            background-color: var(--secondary-color);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            margin: var(--spacing-lg) 0;
+            text-align: center;
+            border: 1px dashed var(--border-color);
+        }
+
+        .flow-step {
+            display: inline-block;
+            padding: var(--spacing-md);
+            margin: var(--spacing-sm);
+            background-color: var(--background);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            min-width: 150px;
+        }
+
+        .flow-arrow {
+            display: inline-block;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin: 0 0.5rem;
+        }
+
+        @media (max-width: 767px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .code-block {
+                font-size: 0.8rem;
+                padding: var(--spacing-md);
+            }
+
+            .flow-diagram {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .flow-step {
+                width: 90%;
+                margin: var(--spacing-sm) auto;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+                display: block;
+                margin: var(--spacing-sm) 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Linux Distributions Guide</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="what-is-linux.html" class="nav-link">What Is Linux?</a></li>
+                <li><a href="distributions.html" class="nav-link">Distributions</a></li>
+                <li><a href="installation.html" class="nav-link">Installation</a></li>
+                <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                <li><a href="backend.html" class="nav-link active">Backend Code</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Page Header -->
+        <section class="hero" style="min-height: 300px;">
+            <div class="hero-content">
+                <h1>Backend Code Explained</h1>
+                <p>Understanding the Flask feedback system</p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section style="padding: var(--spacing-2xl) 0;">
+            <div class="container backend-container">
+                <!-- Introduction -->
+                <div class="backend-intro">
+                    <h2>How the Feedback Backend Works</h2>
+                    <p>The feedback system uses Python and Flask to collect, validate, and store user suggestions. This page breaks down the code in simple terms so you can understand how it all fits together.</p>
+                </div>
+
+                <!-- What is Flask? -->
+                <div class="code-section">
+                    <div class="code-section-title">What is Flask?</div>
+                    <div class="explanation-box">
+                        <h4>Flask Basics</h4>
+                        <p>Flask is a simple Python framework for building web applications. Think of it as a traffic director that:</p>
+                        <ul class="explanation-list">
+                            <li>Listens for requests from your website (like form submissions)</li>
+                            <li>Processes the data you send</li>
+                            <li>Saves or retrieves information</li>
+                            <li>Sends a response back to your browser</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- How It Works -->
+                <div class="code-section">
+                    <div class="code-section-title">The Flow: From Form to File</div>
+                    <div class="flow-diagram">
+                        <div class="flow-step">User fills form</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Click submit</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Flask receives data</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Validate input</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Save to JSON</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Send success</div>
+                    </div>
+                </div>
+
+                <!-- Complete Code -->
+                <div class="code-section">
+                    <div class="code-section-title">Complete Flask Code (app.py)</div>
+                    <p style="color: var(--text-light); margin-bottom: var(--spacing-md);">Here's the entire backend code that powers the feedback system:</p>
+                    
+                    <div class="code-wrapper">
+                        <div class="file-label">app.py</div>
+                        <div class="code-block"><code><span class="code-line"><span class="code-keyword">from</span> flask <span class="code-keyword">import</span> Flask, render_template, request, jsonify</span></code>
+<code><span class="code-line"><span class="code-keyword">from</span> datetime <span class="code-keyword">import</span> datetime</span></code>
+<code><span class="code-line"><span class="code-keyword">import</span> json</span></code>
+<code><span class="code-line"><span class="code-keyword">import</span> os</span></code>
+<code><span class="code-line"><span class="code-keyword">from</span> urllib.parse <span class="code-keyword">import</span> urlparse</span></code>
+<code><span class="code-line"></span></code>
+<code><span class="code-line">app = Flask(__name__)</span></code>
+<code><span class="code-line"></span></code>
+<code><span class="code-line"><span class="code-comment"># File where we store feedback</span></span></code>
+<code><span class="code-line">FEEDBACK_FILE = <span class="code-string">'feedback_data.json'</span></span></code>
+<code><span class="code-line"></span></code>
+<code><span class="code-line"><span class="code-keyword">def</span> <span class="code-function">validate_url</span>(url):</span></code>
+<code><span class="code-line">    <span class="code-comment"># Check if URL is properly formatted</span></span></code>
+<code><span class="code-line">    <span class="code-keyword">if</span> <span class="code-keyword">not</span> url:</span></code>
+<code><span class="code-line">        <span class="code-keyword">return</span> <span class="code-keyword">True</span></span></code>
+<code><span class="code-line">    <span class="code-keyword">try</span>:</span></code>
+<code><span class="code-line">        result = urlparse(url)</span></code>
+<code><span class="code-line">        <span class="code-keyword">return</span> all([result.scheme <span class="code-keyword">in</span> (<span class="code-string">'http'</span>, <span class="code-string">'https'</span>), result.netloc])</span></code>
+<code><span class="code-line">    <span class="code-keyword">except</span>:</span></code>
+<code><span class="code-line">        <span class="code-keyword">return</span> <span class="code-keyword">False</span></span></code>
+<code><span class="code-line"></span></code>
+<code><span class="code-line"><span class="code-keyword">def</span> <span class="code-function">load_feedback</span>():</span></code>
+<code><span class="code-line">    <span class="code-comment"># Read all feedback from the JSON file</span></span></code>
+<code><span class="code-line">    <span class="code-keyword">if</span> os.path.exists(FEEDBACK_FILE):</span></code>
+<code><span class="code-line">        <span class="code-keyword">try</span>:</span></code>
+<code><span class="code-line">            <span class="code-keyword">with</span> <span class="code-function">open</span>(FEEDBACK_FILE, <span class="code-string">'r'</span>) <span class="code-keyword">as</span> f:</span></code>
+<code><span class="code-line">                <span class="code-keyword">return</span> json.load(f)</span></code>
+<code><span class="code-line">        <span class="code-keyword">except</span>:</span></code>
+<code><span class="code-line">            <span class="code-keyword">return</span> []</span></code>
+<code><span class="code-line">    <span class="code-keyword">return</span> []</span></code>
+<code><span class="code-line"></span></code>
+<code><span class="code-line"><span class="code-keyword">def</span> <span class="code-function">save_feedback</span>(feedback_list):</span></code>
+<code><span class="code-line">    <span class="code-comment"># Save all feedback to the JSON file</span></span></code>
+<code><span class="code-line">    <span class="code-keyword">with</span> <span class="code-function">open</span>(FEEDBACK_FILE, <span class="code-string">'w'</span>) <span class="code-keyword">as</span> f:</span></code>
+<code><span class="code-line">        json.dump(feedback_list, f, indent=2)</span></code>
+<code><span class="code-line"></span></code>
+<code><span class="code-line"><span class="code-keyword">@</span>app.route(<span class="code-string">'/'</span>)</span></code>
+<code><span class="code-line"><span class="code-keyword">def</span> <span class="code-function">index</span>():</span></code>
+<code><span class="code-line">    <span class="code-keyword">return</span> render_template(<span class="code-string">'feedback.html'</span>)</span></code>
+<code><span class="code-line"></span></code>
+<code><span class="code-line"><span class="code-keyword">@</span>app.route(<span class="code-string">'/api/feedback'</span>, methods=[<span class="code-string">'POST'</span>])</span></code>
+<code><span class="code-line"><span class="code-keyword">def</span> <span class="code-function">submit_feedback</span>():</span></code>
+<code><span class="code-line">    <span class="code-keyword">try</span>:</span></code>
+<code><span class="code-line">        data = request.get_json()</span></code>
+<code><span class="code-line">        </span></code>
+<code><span class="code-line">        <span class="code-keyword">if</span> <span class="code-keyword">not</span> data:</span></code>
+<code><span class="code-line">            <span class="code-keyword">return</span> jsonify({<span class="code-string">'success'</span>: <span class="code-keyword">False</span>, <span class="code-string">'message'</span>: <span class="code-string">'No data'</span>}), 400</span></code>
+<code><span class="code-line">        </span></code>
+<code><span class="code-line">        <span class="code-comment"># Get and clean the data</span></span></code>
+<code><span class="code-line">        name = data.get(<span class="code-string">'name'</span>, <span class="code-string">''</span>).strip()</span></code>
+<code><span class="code-line">        suggestion = data.get(<span class="code-string">'suggestion'</span>, <span class="code-string">''</span>).strip()</span></code>
+<code><span class="code-line">        email = data.get(<span class="code-string">'email'</span>, <span class="code-string">''</span>).strip()</span></code>
+<code><span class="code-line">        link = data.get(<span class="code-string">'link'</span>, <span class="code-string">''</span>).strip()</span></code>
+<code><span class="code-line">        </span></code>
+<code><span class="code-line">        <span class="code-comment"># Check required fields</span></span></code>
+<code><span class="code-line">        <span class="code-keyword">if</span> <span class="code-keyword">not</span> name:</span></code>
+<code><span class="code-line">            <span class="code-keyword">return</span> jsonify({<span class="code-string">'success'</span>: <span class="code-keyword">False</span>, <span class="code-string">'message'</span>: <span class="code-string">'Name required'</span>}), 400</span></code>
+<code><span class="code-line">        </span></code>
+<code><span class="code-line">        <span class="code-keyword">if</span> <span class="code-keyword">not</span> suggestion:</span></code>
+<code><span class="code-line">            <span class="code-keyword">return</span> jsonify({<span class="code-string">'success'</span>: <span class="code-keyword">False</span>, <span class="code-string">'message'</span>: <span class="code-string">'Suggestion required'</span>}), 400</span></code>
+<code><span class="code-line">        </span></code>
+<code><span class="code-line">        <span class="code-comment"># Validate lengths and formats</span></span></code>
+<code><span class="code-line">        <span class="code-keyword">if</span> len(name) > 100:</span></code>
+<code><span class="code-line">            <span class="code-keyword">return</span> jsonify({<span class="code-string">'success'</span>: <span class="code-keyword">False</span>, <span class="code-string">'message'</span>: <span class="code-string">'Name too long'</span>}), 400</span></code>
+<code><span class="code-line">        </span></code>
+<code><span class="code-line">        <span class="code-keyword">if</span> len(suggestion) > 5000:</span></code>
+<code><span class="code-line">            <span class="code-keyword">return</span> jsonify({<span class="code-string">'success'</span>: <span class="code-keyword">False</span>, <span class="code-string">'message'</span>: <span class="code-string">'Suggestion too long'</span>}), 400</span></code>
+<code><span class="code-line">        </span></code>
+<code><span class="code-line">        <span class="code-keyword">if</span> link <span class="code-keyword">and</span> <span class="code-keyword">not</span> validate_url(link):</span></code>
+<code><span class="code-line">            <span class="code-keyword">return</span> jsonify({<span class="code-string">'success'</span>: <span class="code-keyword">False</span>, <span class="code-string">'message'</span>: <span class="code-string">'Invalid URL'</span>}), 400</span></code>
+<code><span class="code-line">        </span></code>
+<code><span class="code-line">        <span class="code-comment"># Create feedback entry</span></span></code>
+<code><span class="code-line">        feedback_entry = {</span></code>
+<code><span class="code-line">            <span class="code-string">'id'</span>: <span class="code-function">int</span>(datetime.now().timestamp() * 1000),</span></code>
+<code><span class="code-line">            <span class="code-string">'name'</span>: name,</span></code>
+<code><span class="code-line">            <span class="code-string">'email'</span>: email <span class="code-keyword">if</span> email <span class="code-keyword">else</span> <span class="code-keyword">None</span>,</span></code>
+<code><span class="code-line">            <span class="code-string">'suggestion'</span>: suggestion,</span></code>
+<code><span class="code-line">            <span class="code-string">'link'</span>: link <span class="code-keyword">if</span> link <span class="code-keyword">else</span> <span class="code-keyword">None</span>,</span></code>
+<code><span class="code-line">            <span class="code-string">'timestamp'</span>: datetime.now().isoformat(),</span></code>
+<code><span class="code-line">            <span class="code-string">'status'</span>: <span class="code-string">'pending'</span></span></code>
+<code><span class="code-line">        }</span></code>
+<code><span class="code-line">        </span></code>
+<code><span class="code-line">        <span class="code-comment"># Load, add, and save feedback</span></span></code>
+<code><span class="code-line">        feedback_list = load_feedback()</span></code>
+<code><span class="code-line">        feedback_list.append(feedback_entry)</span></code>
+<code><span class="code-line">        save_feedback(feedback_list)</span></code>
+<code><span class="code-line">        </span></code>
+<code><span class="code-line">        <span class="code-keyword">return</span> jsonify({</span></code>
+<code><span class="code-line">            <span class="code-string">'success'</span>: <span class="code-keyword">True</span>,</span></code>
+<code><span class="code-line">            <span class="code-string">'message'</span>: <span class="code-string">'Thank you! Your feedback has been submitted.'</span>,</span></code>
+<code><span class="code-line">            <span class="code-string">'id'</span>: feedback_entry[<span class="code-string">'id'</span>]</span></code>
+<code><span class="code-line">        }), 201</span></code>
+<code><span class="code-line">    </span></code>
+<code><span class="code-line">    <span class="code-keyword">except</span> Exception <span class="code-keyword">as</span> e:</span></code>
+<code><span class="code-line">        <span class="code-keyword">return</span> jsonify({<span class="code-string">'success'</span>: <span class="code-keyword">False</span>, <span class="code-string">'message'</span>: <span class="code-string">'Server error'</span>}), 500</span></code>
+<code><span class="code-line"></span></code>
+<code><span class="code-line"><span class="code-keyword">if</span> __name__ == <span class="code-string">'__main__'</span>:</span></code>
+<code><span class="code-line">    app.run(debug=<span class="code-keyword">True</span>, host=<span class="code-string">'localhost'</span>, port=5000)</span></code></code></div>
+                    </div>
+
+                    <button class="copy-button" onclick="copyCode()">Copy Code to Clipboard</button>
+                </div>
+
+                <!-- Code Breakdown -->
+                <div class="code-section">
+                    <div class="code-section-title">Understanding Each Part</div>
+
+                    <!-- Imports -->
+                    <div class="explanation-box">
+                        <h4>1. Imports (Lines 1-5)</h4>
+                        <p>These are the tools Flask needs to run:</p>
+                        <ul class="explanation-list">
+                            <li><strong>Flask</strong> - The main framework</li>
+                            <li><strong>request</strong> - Gets data from the form</li>
+                            <li><strong>jsonify</strong> - Converts data to JSON format</li>
+                            <li><strong>json, os, datetime</strong> - Tools for files and timestamps</li>
+                        </ul>
+                    </div>
+
+                    <!-- Helper Functions -->
+                    <div class="explanation-box">
+                        <h4>2. Helper Functions (Lines 8-36)</h4>
+                        <p><strong>validate_url()</strong> - Checks if a URL is real (starts with http:// or https://)</p>
+                        <p><strong>load_feedback()</strong> - Reads feedback from feedback_data.json file</p>
+                        <p><strong>save_feedback()</strong> - Writes feedback back to the file</p>
+                    </div>
+
+                    <!-- Routes -->
+                    <div class="explanation-box">
+                        <h4>3. Routes (What URLs Do)</h4>
+                        <p>Routes are like doors to your Flask app. Each route handles a specific task:</p>
+                        
+                        <div class="api-endpoint">
+                            <span class="http-method http-post">POST</span>
+                            <strong>/api/feedback</strong> - Receives form data and saves it
+                        </div>
+
+                        <p>When someone submits the feedback form, this route:</p>
+                        <ul class="explanation-list">
+                            <li>Gets data from the form (name, email, suggestion, link)</li>
+                            <li>Cleans up the text (removes extra spaces)</li>
+                            <li>Validates everything (checks lengths, email format, URL format)</li>
+                            <li>Creates a new feedback entry with a timestamp</li>
+                            <li>Adds it to the feedback_data.json file</li>
+                            <li>Sends back a "success" message to the user</li>
+                        </ul>
+                    </div>
+
+                    <!-- Validation -->
+                    <div class="explanation-box">
+                        <h4>4. Validation (Lines 58-73)</h4>
+                        <p>This part checks that data is safe before saving it:</p>
+                        <ul class="explanation-list">
+                            <li>Name must not be empty and under 100 characters</li>
+                            <li>Suggestion must not be empty and under 5000 characters</li>
+                            <li>Email (if provided) must be a real email</li>
+                            <li>Link (if provided) must start with http:// or https://</li>
+                        </ul>
+                    </div>
+
+                    <!-- Saving Data -->
+                    <div class="explanation-box">
+                        <h4>5. Saving Data (Lines 82-86)</h4>
+                        <p>Once all data is validated, Flask:</p>
+                        <ul class="explanation-list">
+                            <li>Creates a unique ID using the current timestamp</li>
+                            <li>Bundles all the information into one entry</li>
+                            <li>Loads existing feedback</li>
+                            <li>Adds the new entry to the list</li>
+                            <li>Saves everything back to the file</li>
+                        </ul>
+                    </div>
+
+                    <!-- Response -->
+                    <div class="explanation-box">
+                        <h4>6. Response (Lines 88-94)</h4>
+                        <p>Flask sends a JSON response back to the form. If successful, it includes:</p>
+                        <ul class="explanation-list">
+                            <li><strong>success</strong> - True (it worked!)</li>
+                            <li><strong>message</strong> - A thank you message</li>
+                            <li><strong>id</strong> - The unique ID of the submission</li>
+                        </ul>
+                    </div>
+
+                    <!-- Error Handling -->
+                    <div class="explanation-box">
+                        <h4>7. Error Handling (Lines 95-97)</h4>
+                        <p>If anything goes wrong (file error, etc.), Flask catches it and returns a 500 error with a message. The form knows something went wrong and shows an error to the user.</p>
+                    </div>
+
+                    <!-- Running Flask -->
+                    <div class="explanation-box">
+                        <h4>8. Running Flask (Lines 99-100)</h4>
+                        <p>These lines tell Flask to start the server:</p>
+                        <ul class="explanation-list">
+                            <li><strong>debug=True</strong> - Shows helpful error messages when testing</li>
+                            <li><strong>host='localhost'</strong> - Only you can access it locally</li>
+                            <li><strong>port=5000</strong> - Use port 5000 (visit http://localhost:5000)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Key Features -->
+                <div class="code-section">
+                    <div class="code-section-title">Key Features Explained</div>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4>Validation</h4>
+                            <p>The code checks that all data is correct before saving. No bad data gets stored.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Error Handling</h4>
+                            <p>If something breaks, Flask catches the error and tells the user what went wrong.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>JSON Storage</h4>
+                            <p>Feedback is saved in a simple JSON file. You can open it with any text editor.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Status Tracking</h4>
+                            <p>Each feedback entry starts as "pending" and can be changed to "approved" by an admin.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Security</h4>
+                            <p>All inputs are checked for safe values. URLs must be real, emails must be valid.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Timestamps</h4>
+                            <p>Every submission gets a unique ID and timestamp so you know when it was submitted.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How to Use -->
+                <div class="code-section">
+                    <div class="code-section-title">How to Use This Code</div>
+                    
+                    <div class="explanation-box">
+                        <h4>Step 1: Install Flask</h4>
+                        <p>Open your terminal and run:</p>
+                        <div style="background-color: #1e1e1e; color: #d4d4d4; padding: var(--spacing-md); border-radius: var(--border-radius); font-family: 'Monaco', 'Courier New', monospace; margin: var(--spacing-md) 0;">
+                            pip install Flask
+                        </div>
+                    </div>
+
+                    <div class="explanation-box">
+                        <h4>Step 2: Create app.py</h4>
+                        <p>Save the code above as a file called <code>app.py</code> in your project folder.</p>
+                    </div>
+
+                    <div class="explanation-box">
+                        <h4>Step 3: Run the Server</h4>
+                        <p>In your terminal, navigate to the folder and run:</p>
+                        <div style="background-color: #1e1e1e; color: #d4d4d4; padding: var(--spacing-md); border-radius: var(--border-radius); font-family: 'Monaco', 'Courier New', monospace; margin: var(--spacing-md) 0;">
+                            python app.py
+                        </div>
+                    </div>
+
+                    <div class="explanation-box">
+                        <h4>Step 4: Test It</h4>
+                        <p>Open your browser and go to <code>http://localhost:5000</code>. Submit a test form and check the <code>feedback_data.json</code> file to see it saved!</p>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="code-section">
+                    <div class="code-section-title">In Summary</div>
+                    
+                    <div class="explanation-box">
+                        <p>The Flask backend is simple but powerful. It:</p>
+                        <ul class="explanation-list">
+                            <li>Receives feedback from your form</li>
+                            <li>Makes sure the data is safe and valid</li>
+                            <li>Saves it to a file</li>
+                            <li>Tells the form if it worked</li>
+                        </ul>
+                        <p style="margin-top: var(--spacing-lg);">Once you understand how it works, you can modify it to do other things like send emails, store data in a database, or integrate with other services!</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="what-is-linux.html">What Is Linux?</a></li>
+                        <li><a href="distributions.html">Distributions</a></li>
+                        <li><a href="installation.html">Installation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="feedback.html">Send Feedback</a></li>
+                        <li><a href="about.html">About This Project</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="backend.html">Backend Code</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Linux Distributions Guide. All rights reserved.</p>
+                <p><a href="about.html">Learn more about this project</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/nav.js"></script>
+    <script>
+        function copyCode() {
+            // Select all code lines and copy them
+            const codeBlock = document.querySelector('.code-block');
+            const text = codeBlock.innerText;
+            
+            navigator.clipboard.writeText(text).then(function() {
+                const button = document.querySelector('.copy-button');
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.style.backgroundColor = 'var(--accent-color)';
+                
+                setTimeout(function() {
+                    button.textContent = originalText;
+                    button.style.backgroundColor = '';
+                }, 2000);
+            }).catch(function(err) {
+                alert('Error copying to clipboard: ' + err);
+            });
+        }
+    </script>
+</body>
+</html>
