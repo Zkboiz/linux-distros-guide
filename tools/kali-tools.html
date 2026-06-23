@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kali Linux Tools Guide - Linux Distributions Guide</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .tools-section {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .intro-text {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .intro-text p {
+            font-size: var(--font-size-lg);
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .breadcrumb {
+            margin-bottom: var(--spacing-lg);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+        }
+
+        .tool-category {
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .category-title {
+            color: var(--text-dark);
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .tool-card {
+            background-color: var(--background);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            transition: var(--transition);
+        }
+
+        .tool-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .tool-name {
+            color: var(--primary-color);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .tool-description {
+            color: var(--text-dark);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .tool-badge {
+            display: inline-block;
+            background-color: #e0e7ff;
+            color: #3730a3;
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: var(--spacing-sm);
+        }
+
+        .info-box {
+            background-color: var(--secondary-color);
+            border-left: 4px solid var(--primary-color);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-2xl) 0;
+            border-radius: var(--border-radius);
+        }
+
+        .info-box strong {
+            color: var(--primary-color);
+        }
+
+        .info-box ul {
+            margin-top: var(--spacing-md);
+            margin-left: var(--spacing-lg);
+        }
+
+        .next-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-top: var(--spacing-2xl);
+        }
+
+        .next-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--spacing-md);
+        }
+
+        @media (max-width: 767px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Linux Distributions Guide</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../what-is-linux.html" class="nav-link">What Is Linux?</a></li>
+                <li><a href="../distributions.html" class="nav-link">Distributions</a></li>
+                <li><a href="../installation.html" class="nav-link">Installation</a></li>
+                <li><a href="../about.html" class="nav-link">About</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Page Header -->
+        <section class="hero" style="min-height: 300px;">
+            <div class="hero-content">
+                <h1>Kali Linux Tools</h1>
+                <p>Comprehensive overview of security testing tools</p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section style="padding: var(--spacing-2xl) 0;">
+            <div class="container tools-section">
+                <!-- Breadcrumb -->
+                <div class="breadcrumb">
+                    <a href="../index.html">Home</a> > 
+                    <a href="../distributions.html">Distributions</a> > 
+                    <span>Kali Linux Tools</span>
+                </div>
+
+                <!-- Introduction -->
+                <div class="intro-text">
+                    <h2>Kali Linux Tools Overview</h2>
+                    <p>Kali Linux comes pre-installed with hundreds of penetration testing and security auditing tools. Below is an overview of the main tool categories and their purposes. These tools are powerful and should only be used ethically and legally with proper authorization.</p>
+                </div>
+
+                <!-- Information Gathering -->
+                <div class="tool-category">
+                    <h3 class="category-title">Information Gathering</h3>
+                    <p style="color: var(--text-light); margin-bottom: var(--spacing-lg);">Tools for collecting passive information about targets, networks, and systems.</p>
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-name">Nmap</div>
+                            <p class="tool-description">Network exploration tool and security scanner. Maps networks, identifies active hosts, and discovers open ports.</p>
+                            <span class="tool-badge">Network Scanning</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Whois</div>
+                            <p class="tool-description">Retrieves domain registration information and DNS data to identify target ownership and organization details.</p>
+                            <span class="tool-badge">Domain Lookup</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Shodan</div>
+                            <p class="tool-description">Search engine for finding exposed devices and services on the internet using passive reconnaissance.</p>
+                            <span class="tool-badge">Search Engine</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">TheHarvester</div>
+                            <p class="tool-description">Gathers information from public sources like search engines and DNS records about targets.</p>
+                            <span class="tool-badge">Email & Host Discovery</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Maltego</div>
+                            <p class="tool-description">Visual intelligence tool for mapping relationships between people, organizations, and infrastructure.</p>
+                            <span class="tool-badge">OSINT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vulnerability Analysis -->
+                <div class="tool-category">
+                    <h3 class="category-title">Vulnerability Analysis</h3>
+                    <p style="color: var(--text-light); margin-bottom: var(--spacing-lg);">Tools for identifying weaknesses and potential security issues in systems and applications.</p>
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-name">OpenVAS</div>
+                            <p class="tool-description">Open Vulnerability Assessment System. Scans for known vulnerabilities in systems and applications.</p>
+                            <span class="tool-badge">Vulnerability Scanner</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Nikto</div>
+                            <p class="tool-description">Web server scanner that detects dangerous files, outdated software, and configuration issues.</p>
+                            <span class="tool-badge">Web Server</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Lynis</div>
+                            <p class="tool-description">Security auditing tool that performs comprehensive system hardening and security checks on Unix/Linux systems.</p>
+                            <span class="tool-badge">Linux Auditing</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">SQLmap</div>
+                            <p class="tool-description">Automated SQL injection testing tool that detects and exploits SQL database vulnerabilities.</p>
+                            <span class="tool-badge">Database Security</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Application Testing -->
+                <div class="tool-category">
+                    <h3 class="category-title">Web Application Testing</h3>
+                    <p style="color: var(--text-light); margin-bottom: var(--spacing-lg);">Specialized tools for testing web applications and services for security vulnerabilities.</p>
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-name">Burp Suite</div>
+                            <p class="tool-description">Comprehensive platform for web application security testing including scanning, crawling, and manual testing.</p>
+                            <span class="tool-badge">Web Security</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">OWASP ZAP</div>
+                            <p class="tool-description">Open Web Application Security Project tool for finding security vulnerabilities in web applications.</p>
+                            <span class="tool-badge">Web Application</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Wfuzz</div>
+                            <p class="tool-description">Web fuzzer for discovering hidden resources, parameters, and potential vulnerabilities through brute-forcing.</p>
+                            <span class="tool-badge">Fuzzing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wireless Testing -->
+                <div class="tool-category">
+                    <h3 class="category-title">Wireless Testing</h3>
+                    <p style="color: var(--text-light); margin-bottom: var(--spacing-lg);">Tools for analyzing and testing wireless networks and protocols.</p>
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-name">Aircrack-ng</div>
+                            <p class="tool-description">Complete suite for wireless network auditing including packet capture, cracking, and testing tools.</p>
+                            <span class="tool-badge">WiFi Security</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Wireshark</div>
+                            <p class="tool-description">Network protocol analyzer for capturing and inspecting network traffic in real-time.</p>
+                            <span class="tool-badge">Network Analysis</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Kismet</div>
+                            <p class="tool-description">Wireless network detector and sniffer that identifies wireless networks and devices.</p>
+                            <span class="tool-badge">Wireless Detection</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exploitation Tools -->
+                <div class="tool-category">
+                    <h3 class="category-title">Exploitation Tools</h3>
+                    <p style="color: var(--text-light); margin-bottom: var(--spacing-lg);">Advanced tools for testing security by attempting controlled exploitation of vulnerabilities.</p>
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-name">Metasploit Framework</div>
+                            <p class="tool-description">Comprehensive penetration testing framework with thousands of exploits, payloads, and auxiliary modules.</p>
+                            <span class="tool-badge">Exploitation</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Exploit-DB</div>
+                            <p class="tool-description">Database of public exploits and vulnerability proofs-of-concept for testing known security issues.</p>
+                            <span class="tool-badge">Exploit Database</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">BeEF</div>
+                            <p class="tool-description">Browser Exploitation Framework for testing browser vulnerabilities and client-side security.</p>
+                            <span class="tool-badge">Browser Security</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sniffing & Spoofing -->
+                <div class="tool-category">
+                    <h3 class="category-title">Sniffing & Spoofing</h3>
+                    <p style="color: var(--text-light); margin-bottom: var(--spacing-lg);">Tools for analyzing network traffic and testing network protocol vulnerabilities.</p>
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-name">tcpdump</div>
+                            <p class="tool-description">Command-line network packet capture and analysis tool for monitoring network traffic.</p>
+                            <span class="tool-badge">Packet Capture</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Ettercap</div>
+                            <p class="tool-description">Network security tool for man-in-the-middle attacks, network sniffing, and protocol analysis in test environments.</p>
+                            <span class="tool-badge">MITM Testing</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Arpspoof</div>
+                            <p class="tool-description">Network utility for testing ARP spoofing vulnerabilities on local networks.</p>
+                            <span class="tool-badge">Network Testing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post Exploitation -->
+                <div class="tool-category">
+                    <h3 class="category-title">Post Exploitation</h3>
+                    <p style="color: var(--text-light); margin-bottom: var(--spacing-lg);">Tools for maintaining access and gathering information after initial compromise (in authorized testing scenarios).</p>
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-name">Meterpreter</div>
+                            <p class="tool-description">Advanced payload in Metasploit Framework for command and control after successful exploitation.</p>
+                            <span class="tool-badge">Command & Control</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Mimikatz</div>
+                            <p class="tool-description">Credential dumping tool for extracting authentication tokens and passwords from Windows systems.</p>
+                            <span class="tool-badge">Credential Testing</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Empire</div>
+                            <p class="tool-description">Post-exploitation framework with agent-based command and control capabilities for testing persistence.</p>
+                            <span class="tool-badge">Persistence Testing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forensics -->
+                <div class="tool-category">
+                    <h3 class="category-title">Forensics</h3>
+                    <p style="color: var(--text-light); margin-bottom: var(--spacing-lg);">Tools for analyzing systems, recovering data, and investigating security incidents.</p>
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-name">Volatility</div>
+                            <p class="tool-description">Memory forensics framework for analyzing RAM dumps and investigating live system memory.</p>
+                            <span class="tool-badge">Memory Analysis</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Autopsy</div>
+                            <p class="tool-description">Digital forensics platform for analyzing hard drives and file systems in forensic investigations.</p>
+                            <span class="tool-badge">Disk Forensics</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-name">Sleuth Kit</div>
+                            <p class="tool-description">Toolkit and library for digital forensic analysis of file systems and disk images.</p>
+                            <span class="tool-badge">File System Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Important Information -->
+                <div class="info-box">
+                    <strong>⚠️ Responsible Use:</strong> All tools listed here are powerful and should only be used in authorized security testing scenarios. Unauthorized access to computer systems is illegal. Always:
+                    <ul>
+                        <li>Obtain written permission before testing any system you don't own</li>
+                        <li>Understand and follow local laws regarding cybersecurity</li>
+                        <li>Document all testing activities thoroughly</li>
+                        <li>Maintain confidentiality of vulnerabilities and test results</li>
+                        <li>Report findings responsibly to system owners</li>
+                    </ul>
+                </div>
+
+                <!-- Next Steps -->
+                <div class="next-section">
+                    <h3>Ready to Learn More?</h3>
+                    <p>Install Kali Linux and start exploring these powerful security tools with proper training and authorization.</p>
+                    <a href="kali.html" class="btn btn-primary">Kali Linux Setup Guide</a>
+                    <a href="../distributions.html" class="btn btn-secondary" style="margin-left: var(--spacing-md);">Back to Distributions</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="../what-is-linux.html">What Is Linux?</a></li>
+                        <li><a href="../distributions.html">Distributions</a></li>
+                        <li><a href="../installation.html">Installation</a></li>
+                        <li><a href="../compare.html">Comparison</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="../about.html">About This Project</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>A professional learning resource for Linux distributions. Designed for beginners.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Linux Distributions Guide. All rights reserved.</p>
+                <p><a href="../about.html">Learn more about this project</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/nav.js"></script>
+</body>
+</html>
