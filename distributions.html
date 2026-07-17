@@ -138,6 +138,11 @@
             margin-bottom: var(--spacing-md);
         }
 
+        [data-theme="dark"] .recommended-badge {
+            background-color: #064e3b;
+            color: #a7f3d0;
+        }
+
         @media (max-width: 767px) {
             .distro-grid {
                 grid-template-columns: 1fr;
@@ -161,9 +166,9 @@
                 <li><a href="what-is-linux.html" class="nav-link">What Is Linux?</a></li>
                 <li><a href="distributions.html" class="nav-link active">Distributions</a></li>
                 <li><a href="installation.html" class="nav-link">Installation</a></li>
-                <li><a href="feedback.html" class="nav-link">Feedback</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
             </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -263,7 +268,7 @@
                             <div class="distro-tagline">Cutting-Edge Technology</div>
                         </div>
                         <div class="distro-body">
-                            <p class="distro-description">Fedora is sponsored by Red Hat and focuses on innovation and latest technologies. Ideal for learners interested in modern development tools.</p>
+                            <p class="distro-description">Fedora is sponsored by Red Hat and focuses on innovation and latest technologies. Ideal for learners interested in modern development too.</p>
                             <ul class="distro-features">
                                 <li>Latest software versions</li>
                                 <li>Strong developer community</li>
@@ -294,7 +299,7 @@
                             <div class="distro-tagline">The Stable Foundation</div>
                         </div>
                         <div class="distro-body">
-                            <p class="distro-description">Debian is renowned for stability and serves as the foundation for many other distributions including Ubuntu. Perfect for learning Linux fundamentals.</p>
+                            <p class="distro-description">Debian is renowned for stability and serves as the foundation for many other distributions including Ubuntu. Perfect for learning Linux f.</p>
                             <ul class="distro-features">
                                 <li>Exceptional stability</li>
                                 <li>Largest software repository</li>
@@ -383,7 +388,7 @@
                 </div>
 
                 <!-- Next Steps -->
-                <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: var(--spacing-lg); border-radius: var(--border-radius); text-align: center; margin-top: var(--spacing-2xl);">
+                <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: var(--spacing-lg); border-radius: var(--border-radius); text-align: center;">
                     <h3>Help Choosing a Distribution?</h3>
                     <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-md);">Review detailed comparisons to find the best fit for your needs.</p>
                     <a href="compare.html" class="btn btn-primary">Compare Distributions</a>
@@ -406,9 +411,8 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Community</h4>
+                    <h4>About</h4>
                     <ul>
-                        <li><a href="feedback.html">Send Feedback</a></li>
                         <li><a href="about.html">About This Project</a></li>
                     </ul>
                 </div>
@@ -424,6 +428,7 @@
         </div>
     </footer>
 
+    <script src="js/theme.js"></script>
     <script src="js/nav.js"></script>
 </body>
 </html>
